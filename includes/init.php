@@ -165,7 +165,11 @@ if ( ! function_exists( 'btfb_add_css_footer_builder' ) ) {
 		$footer_global_id     = ( isset( $yolo_footer_settings['custom_footer_layout']['yes']['custom_footer_layout_value'] ) ) ? $yolo_footer_settings['custom_footer_layout']['yes']['custom_footer_layout_value'] : '';
 		$footer_page_id       = get_post_meta( get_the_ID(), '_layout_footer_builder_page', true );
 
-		if ( ! empty( $footer_page_id ) ) {
+		if ( is_home() ) {
+			if ( $use_custom_footer == 'yes' && ! empty( $footer_global_id ) ) {
+				echo '<style id="yolo-footer-builder-css">' . get_post_meta( $footer_global_id, '_wpb_shortcodes_custom_css', true ) . get_post_meta( $footer_global_id, '_wpb_post_custom_css', true ) . '</style>';
+			}
+		} elseif ( ! empty( $footer_page_id ) ) {
 			echo '<style id="yolo-footer-builder-css">' . get_post_meta( $footer_page_id, '_wpb_shortcodes_custom_css', true ) . get_post_meta( $footer_page_id, '_wpb_post_custom_css', true ) . '</style>';
 		} elseif ( $use_custom_footer == 'yes' && ! empty( $footer_global_id ) ) {
 			echo '<style id="yolo-footer-builder-css">' . get_post_meta( $footer_global_id, '_wpb_shortcodes_custom_css', true ) . get_post_meta( $footer_global_id, '_wpb_post_custom_css', true ) . '</style>';
@@ -174,7 +178,6 @@ if ( ! function_exists( 'btfb_add_css_footer_builder' ) ) {
 
 	add_action( 'wp_head', 'btfb_add_css_footer_builder', 1111 );
 }
-
 
 if ( ! function_exists( 'btfb_create_meta_box' ) ) {
 	function btfb_create_meta_box() {

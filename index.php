@@ -2,13 +2,13 @@
 /*
 Plugin Name:  Footer Builder
 Plugin URI:   https://bearsthemes.com/
-Description:  Support build footer with visual composer plugin
-Version:      1.0
+Description:  Support build footer with WPBakery Page Builder plugin
+Version:      1.0.1
 Author:       Trong Cong
 Author URI:   https://2dev4u.com/
 License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  btfb
+Text Domain:  bears-footer-builder
 Domain Path:  /languages
 */
 ob_start();
