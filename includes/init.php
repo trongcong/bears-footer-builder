@@ -94,40 +94,42 @@ if ( ! function_exists( 'btfb_set_options_custom_layout_footer' ) ) {
 				$footer_post_option[ $post->ID ] = html_entity_decode( get_the_title( $post->ID ) );
 			}
 		}
-		$options_custom_footer_layout = array(
-			'custom_footer_layout' => array(
-				'type'         => 'multi-picker',
-				'label'        => false,
-				'desc'         => false,
-				'picker'       => array(
-					'selected_value' => array(
-						'label'        => esc_html__( 'Custom Footer', 'yolo' ),
-						'desc'         => esc_html__( 'Use custom footer layout?', 'yolo' ),
-						'type'         => 'switch',
-						'right-choice' => array(
-							'value' => 'yes',
-							'label' => esc_html__( 'Yes', 'yolo' )
-						),
-						'left-choice'  => array(
-							'value' => 'no',
-							'label' => esc_html__( 'No', 'yolo' )
-						),
-						'value'        => 'no',
-					)
-				),
-				'choices'      => array(
-					'yes' => array(
-						'custom_footer_layout_value' => array(
-							'type'    => 'select',
-							'label'   => false,
-							'desc'    => false,
-							'choices' => $footer_post_option,
+		if ( defined( 'FW' ) ) {
+			$options_custom_footer_layout = array(
+				'custom_footer_layout' => array(
+					'type'         => 'multi-picker',
+					'label'        => false,
+					'desc'         => false,
+					'picker'       => array(
+						'selected_value' => array(
+							'label'        => esc_html__( 'Custom Footer', 'yolo' ),
+							'desc'         => esc_html__( 'Use custom footer layout?', 'yolo' ),
+							'type'         => 'switch',
+							'right-choice' => array(
+								'value' => 'yes',
+								'label' => esc_html__( 'Yes', 'yolo' )
+							),
+							'left-choice'  => array(
+								'value' => 'no',
+								'label' => esc_html__( 'No', 'yolo' )
+							),
+							'value'        => 'no',
 						)
-					)
-				),
-				'show_borders' => false,
-			)
-		);
+					),
+					'choices'      => array(
+						'yes' => array(
+							'custom_footer_layout_value' => array(
+								'type'    => 'select',
+								'label'   => false,
+								'desc'    => false,
+								'choices' => $footer_post_option,
+							)
+						)
+					),
+					'show_borders' => false,
+				)
+			);
+		}
 
 		return $options_custom_footer_layout;
 	}
